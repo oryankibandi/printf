@@ -1,3 +1,1 @@
-## Printf
-
-This repo contains printf project
+This is a readme file for printf project.
