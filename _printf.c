@@ -35,6 +35,11 @@ int _printf(const char *format, ...)
 					_putchar('%');
 					n++;
 					break;
+				default:
+					_putchar('%');
+					n++;
+					_putchar(format[i]);
+					n++;
 			}
 			k = 0;
 		}
