@@ -31,6 +31,10 @@ int _printf(const char *format, ...)
 					n = n + b;
 					b = 0;
 					break;
+				case '%':
+					_putchar('%');
+					n++;
+					break;
 			}
 			k = 0;
 		}
