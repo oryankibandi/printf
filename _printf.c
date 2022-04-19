@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include "main.h"
+#include <stddef.h>
 
 
 int print_string(char *str);
@@ -92,6 +93,8 @@ int print_string(char *str)
 	int l = 0;
 
 	if (!str)
+		return (-1);
+	if (str == NULL)
 		str = "(null)";
 
 	if (str)
