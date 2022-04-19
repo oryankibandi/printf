@@ -3,7 +3,6 @@
 #include <stddef.h>
 
 
-int print_string(char *str);
 /**
  * _printf -  prints different data types passed in
  * @format: string to be printed
@@ -16,7 +15,6 @@ int _printf(const char *format, ...)
 	unsigned int i = 0, k = 0, m;
 	int n = 0, b;
 	char c;
-	char *stri = NULL;
 
 	if (!format || (format[0] == '%' && !format[1]))
 		return (-1);
@@ -30,7 +28,7 @@ int _printf(const char *format, ...)
 	while (format[i] != '\0')
 	{
 		if (!format[i])
-			break;
+			return (-1);
 		m = 1;
 		if (k)
 		{
@@ -45,8 +43,7 @@ int _printf(const char *format, ...)
 						n++;
 					break;
 				case 's':
-					stri = va_arg(ap, char *);
-					b = print_string(stri);
+					b = print_string(ap);
 					n += b;
 					b = 0;
 					break;
@@ -102,10 +99,13 @@ int _printf(const char *format, ...)
  * Return: number of characters printed
  *
  */
-int print_string(char *str)
+int print_string(va_list args)
 {
 	int j = 0, l = 0;
+	char *str = va_arg(args, char *);
 
+	if (!args)
+		return (-1);
 	if (!str)
 	{
 		str = "(null)";
