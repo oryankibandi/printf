@@ -16,7 +16,6 @@ int _printf(const char *format, ...)
 	unsigned int i = 0, k = 0, m;
 	int n = 0, b;
 	char c;
-	char *str1;
 
 	if (!format || (format[0] == '%' && !format[1]))
 		return (-1);
