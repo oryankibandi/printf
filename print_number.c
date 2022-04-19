@@ -10,6 +10,9 @@ int print_int(int var)
 {
 
 	int i = 0;
+	
+	if (!var)
+		return (-1);
 
 	if (var < 0)
 	{

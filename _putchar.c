@@ -9,7 +9,7 @@
  */
 int _putchar(char c)
 {
-	if (!c)
+	if (!c || c == '\0')
 		return (-1);
 
 	return (write(1, &c, 1));
