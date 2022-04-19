@@ -86,8 +86,8 @@ int print_string(char *str)
 	unsigned int j = 0;
 	int l = 0;
 
-	if (!str)
-		return (0);
+	if (str == NULL)
+		str = "(null)";
 
 	while (str[j] != '\0')
 	{
