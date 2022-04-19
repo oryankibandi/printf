@@ -20,6 +20,8 @@ int main(void)
         printf("character printed: %d\n ", len2);
         len4 = _printf("i am %d yrs\n", age);
         printf("length with int: %d\n",len4);
+	_printf("Unknown:[%r]\n");
+	//printf("unknown %k", len);
         //printf("%s", age);
         return (0);
 }

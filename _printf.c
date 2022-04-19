@@ -1,6 +1,10 @@
 #include "main.h"
 #include <stdlib.h>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d0a2157a51210fbac5ec6d2eb751b33e9a461663
 /**
  * check_for_specifiers - checks if there is a valid format specifier
  * @format: possible format specifier
@@ -9,6 +13,7 @@
  */
 static int (*check_for_specifiers(const char *format))(va_list)
 {
+<<<<<<< HEAD
 	unsigned int i;
 	print_t p[] = {
 		{"c", print_c},
@@ -26,10 +31,70 @@ static int (*check_for_specifiers(const char *format))(va_list)
 		{"R", print_R},
 		{NULL, NULL}
 	};
+=======
+	va_list ap;
+
+	unsigned int i = 0, k = 0, m;
+	int n = 0, b;
+	char c;
+>>>>>>> d0a2157a51210fbac5ec6d2eb751b33e9a461663
 
 	for (i = 0; p[i].t != NULL; i++)
 	{
+<<<<<<< HEAD
 		if (*(p[i].t) == *format)
+=======
+	va_start(ap, format);
+
+	while (format[i] != '\0')
+	{
+		if (!format[i])
+			return (-1);
+		m = 1;
+		if (k)
+		{
+			m = 0;
+			switch (format[i])
+			{
+				case 'c':
+					c = va_arg(ap, int);
+					if (sizeof(c) > 1)
+						return (-1);
+					if (_putchar(c))
+						n++;
+					break;
+				case 's':
+					b = print_string(ap);
+					n += b;
+					b = 0;
+					break;
+				case 'd':
+					b = print_int(va_arg(ap, int));
+					n += b;
+					b = 0;
+					break;
+				case 'i':
+					b = print_int(va_arg(ap, int));
+					n += b;
+					b = 0;
+					break;
+				case '%':
+					if (_putchar('%'))
+						n++;
+					break;
+				case '\0':
+					return (-1);
+				default:
+					if (_putchar('%'))
+						n++;
+					if (_putchar(format[i]))
+						n++;
+			}
+			k = 0;
+		}
+
+		if (format[i] == '%' && m)
+>>>>>>> d0a2157a51210fbac5ec6d2eb751b33e9a461663
 		{
 			break;
 		}
@@ -43,6 +108,7 @@ static int (*check_for_specifiers(const char *format))(va_list)
  *
  * Return: number of characters printed
  */
+<<<<<<< HEAD
 int _printf(const char *format, ...)
 {
 	unsigned int i = 0, count = 0;
@@ -53,6 +119,20 @@ int _printf(const char *format, ...)
 		return (-1);
 	va_start(valist, format);
 	while (format[i])
+=======
+int print_string(va_list args)
+{
+	int j = 0, l = 0;
+	char *str = va_arg(args, char *);
+
+	if (!args)
+		return (-1);
+	if (!str)
+	{
+		str = "(null)";
+	}
+	if (str)
+>>>>>>> d0a2157a51210fbac5ec6d2eb751b33e9a461663
 	{
 		for (; format[i] != '%' && format[i]; i++)
 		{

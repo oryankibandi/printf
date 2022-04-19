@@ -30,7 +30,7 @@ int print_int(int var)
 	if (var / 10)
 		print_int(var / 10);
 
-	_putchar(var % 10 + '0');
+	_putchar((var % 10) + '0');
 	i++;
 
 	return (i);
