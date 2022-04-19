@@ -16,6 +16,7 @@ int _printf(const char *format, ...)
 	unsigned int i = 0, k = 0, m;
 	int n = 0, b;
 	char c;
+	char *str1;
 
 	if (!format || (format[0] == '%' && !format[1]))
 		return (-1);
@@ -44,7 +45,10 @@ int _printf(const char *format, ...)
 					n++;
 					break;
 				case 's':
-					b = print_string(va_arg(ap, char *));
+					str1 = va_arg(ap, char *);
+					if (!str1)
+						return (-1)
+					b = print_string(str1);
 					n += b;
 					b = 0;
 					break;
@@ -104,7 +108,7 @@ int print_string(char *str)
 {
 	int i = 0;
 
-	if (str == NULL)
+	if (!str)
 	{
 		str = "(null)";
 	}
