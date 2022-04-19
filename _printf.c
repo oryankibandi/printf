@@ -89,21 +89,18 @@ int _printf(const char *format, ...)
  */
 int print_string(char *str)
 {
-	unsigned int j = 0;
-	int l = 0;
+	int i = 0;
 
-	if (!str || str == NULL)
+	if (str == NULL)
+	{
 		str = "(null)";
-
+	}
 	if (str)
 	{
-		while (str[j] != '\0')
+		for (; *(str + i) != '\0'; i++)
 		{
-			_putchar(str[j]);
-			l++;
-			j++;
+			_putchar(*(str + i));
 		}
 	}
-
-	return (l);
+	return (i);
 }
