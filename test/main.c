@@ -21,7 +21,7 @@ int main(void)
         len4 = _printf("i am %d yrs\n", age);
         printf("length with int: %d\n",len4);
 	_printf("Unknown:[%r]\n");
-	printf("unknown %k", len);
+	//printf("unknown %k", len);
         //printf("%s", age);
         return (0);
 }
