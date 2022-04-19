@@ -1,5 +1,7 @@
 #include <stdarg.h>
 #include "main.h"
+
+
 int print_string(char *str);
 /**
  * _printf -  prints different data types passed in
@@ -29,35 +31,25 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case 'c':
-					_putchar(va_arg(ap, int));
-					n++;
+					n += _putchar(va_arg(ap, int));
 					break;
 				case 's':
-					b = print_string(va_arg(ap, char *));
-					n = n + b;
-					b = 0;
+					n +=  print_string(va_arg(ap, char *));
 					break;
 				case 'd':
-					b = print_int(va_arg(ap, int));
-					n += b;
-					b = 0;
+					n += print_int(va_arg(ap, int));
 					break;
 				case 'i':
-					b = print_int(va_arg(ap, int));
-					n += b;
-					b = 0;
+					n += print_int(va_arg(ap, int));
 					break;
 				case '%':
-					_putchar('%');
-					n++;
+					n += _putchar('%');
 					break;
 				case '\0':
 					return (-1);
 				default:
-					_putchar('%');
-					n++;
-					_putchar(format[i]);
-					n++;
+					n += _putchar('%');
+					n += _putchar(format[i]);
 			}
 			k = 0;
 		}
@@ -67,8 +59,7 @@ int _printf(const char *format, ...)
 			k = 1;
 		} else if (format[i] != '%' && m)
 		{
-			_putchar(format[i]);
-			n++;
+			n += _putchar(format[i]);
 		}
 
 		i++;
