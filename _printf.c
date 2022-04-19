@@ -13,8 +13,7 @@ int _printf(const char *format, ...)
 	va_list ap;
 
 	unsigned int i = 0, k = 0, m;
-	int n = 0;
-	int b;
+	int n = 0, b;
 
 	if (!format)
 		return (-1);
@@ -52,7 +51,7 @@ int _printf(const char *format, ...)
 					break;
 				case '%':
 					_putchar('%');
-					n++
+					n++;
 					break;
 				case '\0':
 					return (-1);
