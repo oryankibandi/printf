@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 
 	unsigned int i = 0, k = 0, m;
 	int n = 0;
-	int b = 0;
+	int b;
 
 	if (!format)
 		return (-1);
@@ -32,9 +32,8 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case 'c':
-					b = _putchar(va_arg(ap, int));
-					n += b;
-					b = 0;
+					_putchar(va_arg(ap, int));
+					n++;
 					break;
 				case 's':
 					b = print_string(va_arg(ap, char *));
@@ -44,7 +43,7 @@ int _printf(const char *format, ...)
 				case 'd':
 					b = print_int(va_arg(ap, int));
 					n += b;
-					b = o;
+					b = 0;
 					break;
 				case 'i':
 					b = print_int(va_arg(ap, int));
