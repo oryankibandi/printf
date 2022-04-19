@@ -45,10 +45,7 @@ int _printf(const char *format, ...)
 					n++;
 					break;
 				case 's':
-					str1 = va_arg(ap, char *);
-					if (!str1)
-						return (-1)
-					b = print_string(str1);
+					b = print_string(va_arg(ap, char *));
 					n += b;
 					b = 0;
 					break;
