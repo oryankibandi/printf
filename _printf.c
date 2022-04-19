@@ -34,6 +34,16 @@ int _printf(const char *format, ...)
 					n = n + b;
 					b = 0;
 					break;
+				case 'd':
+					b = print_int(va_arg(ap, int));
+					n += b;
+					b = 0;
+					break;
+				case 'i':
+					b = print_int(va_arg(ap, int));
+					n += b;
+					b = 0;
+					break;
 				case '%':
 					_putchar('%');
 					n++;
@@ -75,6 +85,9 @@ int print_string(char *str)
 {
 	unsigned int j = 0;
 	int l = 0;
+
+	if (!str)
+		return (0);
 
 	while (str[j] != '\0')
 	{
