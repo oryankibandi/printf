@@ -15,6 +15,7 @@ int _printf(const char *format, ...)
 
 	unsigned int i = 0, k = 0, m;
 	int n = 0, b;
+	char c;
 
 	if (format)
 	{
@@ -31,7 +32,10 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case 'c':
-					_putchar(va_arg(ap, int));
+					c = va_arg(ap, int);
+					if (sizeof(c) > 1)
+						return (-1);
+					_putchar(c);
 					n++;
 					break;
 				case 's':
