@@ -92,9 +92,7 @@ int print_string(char *str)
 	unsigned int j = 0;
 	int l = 0;
 
-	if (!str)
-		return (-1);
-	if (str == NULL)
+	if (!str || str == NULL)
 		str = "(null)";
 
 	if (str)
