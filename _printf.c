@@ -16,9 +16,8 @@ int _printf(const char *format, ...)
 	unsigned int i = 0, k = 0, m;
 	int n = 0, b;
 
-	if (!format)
-		return (-1);
-
+	if (format)
+	{
 	va_start(ap, format);
 
 	while (format[i] != '\0')
@@ -78,6 +77,11 @@ int _printf(const char *format, ...)
 	}
 
 	va_end(ap);
+	}
+	else
+	{
+		return (-1);
+	}
 
 	return (n);
 }
