@@ -40,8 +40,8 @@ int _printf(const char *format, ...)
 					c = va_arg(ap, int);
 					if (sizeof(c) > 1)
 						return (-1);
-					_putchar(c);
-					n++;
+					if (_putchar(c))
+						n++;
 					break;
 				case 's':
 					b = print_string(va_arg(ap, char *));
@@ -59,16 +59,16 @@ int _printf(const char *format, ...)
 					b = 0;
 					break;
 				case '%':
-					_putchar('%');
-					n++;
+					if (_putchar('%'))
+						n++;
 					break;
 				case '\0':
 					return (-1);
 				default:
-					_putchar('%');
-					n++;
-					_putchar(format[i]);
-					n++;
+					if (_putchar('%'))
+						n++;
+					if (_putchar(format[i]))
+						n++;
 			}
 			k = 0;
 		}
@@ -78,8 +78,8 @@ int _printf(const char *format, ...)
 			k = 1;
 		} else if (format[i] != '%' && m)
 		{
-			_putchar(format[i]);
-			n++;
+			if (_putchar(format[i]))
+				n++;
 		}
 
 		i++;
@@ -102,7 +102,7 @@ int _printf(const char *format, ...)
  */
 int print_string(char *str)
 {
-	int i = 0;
+	int j = 0, l = 0;
 
 	if (!str)
 	{
@@ -110,10 +110,12 @@ int print_string(char *str)
 	}
 	if (str)
 	{
-		for (; *(str + i) != '\0'; i++)
+		while (str[j] != '\0')
 		{
-			_putchar(*(str + i));
+			if (_putchar(str[j]))
+				l++;
+			j++;
 		}
 	}
-	return (i);
+	return (l);
 }
