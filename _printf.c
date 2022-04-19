@@ -89,11 +89,14 @@ int print_string(char *str)
 	if (!str)
 		str = "(null)";
 
-	while (str[j] != '\0')
+	if (str)
 	{
-		_putchar(str[j]);
-		l++;
-		j++;
+		while (str[j] != '\0')
+		{
+			_putchar(str[j]);
+			l++;
+			j++;
+		}
 	}
 
 	return (l);
