@@ -10,7 +10,7 @@ int print_int(int var)
 {
 
 	int i = 0;
-	
+
 	if (!var)
 		return (-1);
 
@@ -22,8 +22,10 @@ int print_int(int var)
 	}
 
 	if (var == 0)
-	_putchar('0');
-	i++;
+	{
+		_putchar('0');
+		i++;
+	}
 
 	if (var / 10)
 		print_int(var / 10);
