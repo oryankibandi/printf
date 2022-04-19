@@ -46,8 +46,6 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					stri = va_arg(ap, char *);
-					if (stri == NULL)
-						break;
 					b = print_string(stri);
 					n += b;
 					b = 0;
