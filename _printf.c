@@ -1,55 +1,23 @@
+#include <stdarg.h>
 #include "main.h"
-#include <stdlib.h>
+int print_string(char *str);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d0a2157a51210fbac5ec6d2eb751b33e9a461663
 /**
- * check_for_specifiers - checks if there is a valid format specifier
- * @format: possible format specifier
- *
- * Return: pointer to valid function or NULL
+ * _printf -  prints different data types passed in
+ * @format: string to be printed
+ * Return: number of characters printed
  */
-static int (*check_for_specifiers(const char *format))(va_list)
+int _printf(const char *format, ...)
 {
-<<<<<<< HEAD
-	unsigned int i;
-	print_t p[] = {
-		{"c", print_c},
-		{"s", print_s},
-		{"i", print_i},
-		{"d", print_d},
-		{"u", print_u},
-		{"b", print_b},
-		{"o", print_o},
-		{"x", print_x},
-		{"X", print_X},
-		{"p", print_p},
-		{"S", print_S},
-		{"r", print_r},
-		{"R", print_R},
-		{NULL, NULL}
-	};
-=======
 	va_list ap;
 
 	unsigned int i = 0, k = 0, m;
 	int n = 0, b;
-	char c;
->>>>>>> d0a2157a51210fbac5ec6d2eb751b33e9a461663
 
-	for (i = 0; p[i].t != NULL; i++)
-	{
-<<<<<<< HEAD
-		if (*(p[i].t) == *format)
-=======
 	va_start(ap, format);
 
 	while (format[i] != '\0')
 	{
-		if (!format[i])
-			return (-1);
 		m = 1;
 		if (k)
 		{
@@ -57,15 +25,12 @@ static int (*check_for_specifiers(const char *format))(va_list)
 			switch (format[i])
 			{
 				case 'c':
-					c = va_arg(ap, int);
-					if (sizeof(c) > 1)
-						return (-1);
-					if (_putchar(c))
-						n++;
+					_putchar(va_arg(ap, int));
+					n++;
 					break;
 				case 's':
-					b = print_string(ap);
-					n += b;
+					b = print_string(va_arg(ap, char *));
+					n = n + b;
 					b = 0;
 					break;
 				case 'd':
@@ -73,90 +38,54 @@ static int (*check_for_specifiers(const char *format))(va_list)
 					n += b;
 					b = 0;
 					break;
-				case 'i':
-					b = print_int(va_arg(ap, int));
-					n += b;
-					b = 0;
-					break;
 				case '%':
-					if (_putchar('%'))
-						n++;
+					_putchar('%');
+					n++;
 					break;
-				case '\0':
-					return (-1);
 				default:
-					if (_putchar('%'))
-						n++;
-					if (_putchar(format[i]))
-						n++;
+					 _putchar('%');
+					 n++;
+					_putchar(format[i]);
+					n++;
 			}
 			k = 0;
 		}
 
 		if (format[i] == '%' && m)
->>>>>>> d0a2157a51210fbac5ec6d2eb751b33e9a461663
 		{
-			break;
+			k = 1;
+		} else if (format[i] != '%' && m)
+		{
+			_putchar(format[i]);
+			n++;
 		}
+
+		i++;
 	}
-	return (p[i].f);
+
+	va_end(ap);
+
+	return (n);
 }
 
 /**
- * _printf - prints anything
- * @format: list of argument types passed to the function
- *
+ * print_string - prints string
+ * @str: string literal
  * Return: number of characters printed
+ *
  */
-<<<<<<< HEAD
-int _printf(const char *format, ...)
+int print_string(char *str)
 {
-	unsigned int i = 0, count = 0;
-	va_list valist;
-	int (*f)(va_list);
+	unsigned int j = 0;
+	int l = 0;
 
-	if (format == NULL)
-		return (-1);
-	va_start(valist, format);
-	while (format[i])
-=======
-int print_string(va_list args)
-{
-	int j = 0, l = 0;
-	char *str = va_arg(args, char *);
+	while (str[j] != '\0')
+	{
+		_putchar(str[j]);
+		l++;
+		j++;
+	}
 
-	if (!args)
-		return (-1);
-	if (!str)
-	{
-		str = "(null)";
-	}
-	if (str)
->>>>>>> d0a2157a51210fbac5ec6d2eb751b33e9a461663
-	{
-		for (; format[i] != '%' && format[i]; i++)
-		{
-			_putchar(format[i]);
-			count++;
-		}
-		if (!format[i])
-			return (count);
-		f = check_for_specifiers(&format[i + 1]);
-		if (f != NULL)
-		{
-			count += f(valist);
-			i += 2;
-			continue;
-		}
-		if (!format[i + 1])
-			return (-1);
-		_putchar(format[i]);
-		count++;
-		if (format[i + 1] == '%')
-			i += 2;
-		else
-			i++;
-	}
-	va_end(valist);
-	return (count);
+	return (l);
 }
+
