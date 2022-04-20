@@ -25,16 +25,16 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case 'c':
-					_putchar(va_arg(ap, int));
+					_putchar(va_arg(&ap, int));
 					n++;
 					break;
 				case 's':
-					b = print_string(va_arg(ap, char *));
+					b = print_string(va_arg(&ap, char *));
 					n = n + b;
 					b = 0;
 					break;
 				case 'd':
-					b = print_int(va_arg(ap, int));
+					b = print_int(va_arg(&ap, int));
 					n += b;
 					b = 0;
 					break;
