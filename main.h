@@ -5,6 +5,5 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 int print_int(int n);
 int print_str(char *c);
-int print_binary(va_list l, flags_t *f);
 
 #endif
