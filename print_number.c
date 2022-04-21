@@ -2,31 +2,29 @@
 
 /**
  * print_int - prints integer
- * @var:integer to be printed
+ * @n:integer to be printed
  * Return: void
  *
  */
-int print_int(int var)
+int print_int(int n)
 {
+int a = n;
+int i = 0;
 
-	int i = 0;
-
-	if (var < 0)
-	{
-		_putchar('-');
-		i++;
-		var = var * -1;
-	}
-
-	if (var == 0)
-	_putchar('0');
-	i++;
-
-	if (var / 10)
-		print_int(var / 10);
-
-	_putchar(var % 10 + '0');
-	i++;
-
-	return (i);
+if (n)
+{
+if (n < 0)
+{
+i += _putchar('-');
+a = -a;
+}
+if ((a / 10) > 0)
+i += print_int(a / 10);
+i += _putchar((a % 10) + '0');
+}
+else
+{
+i += _putchar(n + '0');
+}
+return (i);
 }
