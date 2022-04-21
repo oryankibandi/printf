@@ -1,1 +1,1 @@
-This is a readme file for printf projects.
+This is a readme file for printf project.
